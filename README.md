@@ -9,7 +9,7 @@
 `户型`、`单价`、`首付`、`住宅类型`、`总价`、`标题`、`房屋描述`、`月供`。<br>
 
 ## 项目基本说明
-* 这是学校的一个小项目
+* 这是我学校团队的一个小项目
 * 去重采用Bloomfilter算法
 * 防Ban，采用更换User-agent和禁cookies
 * 此次演示只是在单机上面执行，分布式请自己部署
@@ -24,7 +24,7 @@
 * mongodb
 * redis 
 
-## 运行准备
+## 运行
 * 启动Mongodb服务
 * 启动Redis服务
 * 启动lpush.py
@@ -34,3 +34,4 @@
     **lpush.py是压入初始URL到Redis数据库中，不要重复执行。**
     
 ## 运行结果截图
+![image](https://github.com/CaryXiang/HouseInfoSpiderDistributed/blob/master/screenshots/success1.png)
