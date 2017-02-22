@@ -42,3 +42,7 @@
 ![image](https://github.com/CaryXiang/HouseInfoSpiderDistributed/blob/master/screenshots/success2.png)
 * Mongodb数据库中的效果：
 ![image](https://github.com/CaryXiang/HouseInfoSpiderDistributed/blob/master/screenshots/mongo.png)
+
+
+## 最后
+* 这是16年12月份左右时完成的，有上面问题欢迎提issues。
