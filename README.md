@@ -34,4 +34,8 @@
     **lpush.py是压入初始URL到Redis数据库中，不要重复执行。**
     
 ## 运行结果截图
+* 运行时：
 ![image](https://github.com/CaryXiang/HouseInfoSpiderDistributed/blob/master/screenshots/success1.png)
+![image](https://github.com/CaryXiang/HouseInfoSpiderDistributed/blob/master/screenshots/success2.png)
+* Mongodb数据库中的效果：
+![image](https://github.com/CaryXiang/HouseInfoSpiderDistributed/blob/master/screenshots/mongo.png)
