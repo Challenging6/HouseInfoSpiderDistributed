@@ -24,6 +24,9 @@
 * mongodb
 * redis 
 
+## 运行前
+* 在setting.py中配置数据库和一些其他的设置
+
 ## 运行
 * 启动Mongodb服务
 * 启动Redis服务
