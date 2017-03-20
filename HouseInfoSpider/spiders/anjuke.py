@@ -10,6 +10,7 @@ class AJKSpider(RedisCrawlSpider):
     name = "anjuke"
     allowed_domains = ["wuhan.anjuke.com"]
     redis_key = "anjuke:start_urls"
+    ac = AddressConvert()
     #start_urls = (
     #    'http://wuhan.anjuke.com/sale/?from=navigation',
     #)
@@ -19,15 +20,16 @@ class AJKSpider(RedisCrawlSpider):
     )
     def parse_item(self, response):
         item = HouseInfoItem()
-        ac = AddressConvert()
+        
         city = "武汉"
         try:
             bsObj = BeautifulSoup(response.body, 'lxml')
             item['url'] = response.url
             item['village_title'] = bsObj.find('h3', class_='long-title').text.strip()			#标题
             item['village_total'] = bsObj.find('span', class_='light info-tag').text.strip()	#总价
-            item['village_house_type'] = bsObj.find('span', class_='info-tag').text	.strip()	#户型
-            item['village_area'] = bsObj.find('span', class_='info-tag no-border').text.strip()	#房子面积
+            basic_info = bsObj.findAll('span', class_='info-tag')
+            item['village_house_type'] = basic_info[1].text.strip()  # 户型
+            item['village_area'] = basic_info[2].text.strip()  # 房子面积
             house_info1 = bsObj.find('div', class_='first-col detail-col').findAll('dl')
             house_info2 = bsObj.find('div', class_='second-col detail-col').findAll('dl')
             house_info3 = bsObj.find('div', class_='third-col detail-col').findAll('dl')
@@ -41,7 +43,7 @@ class AJKSpider(RedisCrawlSpider):
             item['village_unit_price'] = house_info3[1].dd.text.encode('utf-8')					#单价
             item['village_down_payment'] = house_info3[2].dd.contents[0].strip()				#首付
             item['village_describe'] = bsObj.find('div', class_='desc-article').text.strip()	#描述
-            item['lat'], item['lng'] = ac.searchByScript(bsObj.body.findAll('script'))
+            item['lat'], item['lng'] = self.ac.searchByScript(bsObj.body.findAll('script'))
 
         except Exception as e:
             self.logger.error("parse url:%s err:%s",response.url,e)

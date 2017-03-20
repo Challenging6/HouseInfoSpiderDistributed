@@ -13,13 +13,13 @@ class FTXSpider(RedisCrawlSpider):
     #start_urls = (
     #    'http://esf.wuhan.fang.com/chushou/3_159333352.htm',
    # )
+    ac = AddressConvert()
 
     rules = (
        Rule(link_extractor=LinkExtractor(allow=('http://esf.wuhan.fang.com/chushou/[0-9]_[0-9]*.htm')), callback='parse_item',follow=True),
     )
     def parse_item(self, response):
         item = HouseInfoItem()
-        ac = AddressConvert()
         city = '武汉'
         try:
             bsObj = BeautifulSoup(response.body, 'lxml')
@@ -41,12 +41,12 @@ class FTXSpider(RedisCrawlSpider):
             item['village_total'] = inforTxt3.findAll('span')[1].text + inforTxt3.findAll('span')[2].text #总价
             item['village_title'] = bsObj.find('div', class_='title').h1.text.strip()       #标题
             item['village_describe'] = bsObj.find('div', class_='describe').text.replace('\n', '').strip()    #得到描述
-            lat_lng = ac.locatebyAddr(item['village_location'], city)
+            lat_lng = self.ac.locatebyAddr(item['village_location'], city)
             item['lat'] = lat_lng['lat']
             item['lng'] = lat_lng['lng']
-
         except Exception as e:
             self.logger.error("parse url:%s err:%s",response.url,e)
+
         return item
 
 
