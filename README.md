@@ -34,8 +34,8 @@
 * 启动crawlall.py
 
 ## 注意
-    **lpush.py是压入初始URL到Redis数据库中，不要重复执行。** <br>
-    **在spyders文件夹下address.py中，填写自己的百度地图访问AK。**
+    **lpush.py是压入初始URL到Redis数据库中，不要重复执行。** 
+    **在spiders文件夹下address.py中，填写自己的百度地图访问AK。**
     
 ## 运行结果截图
 * 运行时：
