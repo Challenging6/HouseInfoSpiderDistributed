@@ -7,6 +7,7 @@ import re
 class AddressConvert(object):
     def __init__(self):
         self.flag = 1
+        # 在这里填写自己的百度地图AK
         self.ak = ['N6ylwnEcF1UNXoek5ITEvRUNZz2C9YGE', 'kmgAFIco6RqA4RVzoCX53YxpVz0d65N9']
 
     # 匹配地址
